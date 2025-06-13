@@ -1,0 +1,10 @@
+{
+  "login": {
+    "title": "Sign In",
+    "email": "Email",
+    "emailError": "Please enter a valid email address.",
+    "password": "Password",
+    "passwordError": "Please enter your password.",
+    "signIn": "Sign In"
+  }
+}
