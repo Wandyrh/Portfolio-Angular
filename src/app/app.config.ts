@@ -2,6 +2,7 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChang
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
 import { importProvidersFrom } from '@angular/core';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
@@ -25,5 +26,6 @@ export const appConfig: ApplicationConfig = {
       })
     ),
     provideAnimations(),
+    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: { disabled: false } }
   ]
 };

@@ -1,17 +1,22 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { LoginDto } from './dtos/login.dto';
-import { LoginUserResponseDTO } from './dtos/login-user-response.dto';
 import { TokenService } from '../../shared/services/token.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule, TranslateModule],
   templateUrl: './login.html',
-  styleUrl: './login.scss'
+  styleUrl: './login.scss',
 })
 export class Login {
   form: FormGroup;
@@ -19,11 +24,12 @@ export class Login {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private router: Router
   ) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
@@ -32,14 +38,13 @@ export class Login {
       const { email, password } = this.form.value;
       const dto: LoginDto = { userName: email, password };
       this.authService.login(dto).subscribe({
-        next: (result: LoginUserResponseDTO) => {
-          this.tokenService.setToken(result.accessToken);
-          console.log('Login success:', result);
+        next: (result) => {
+          this.tokenService.setToken(result.data?.accessToken || '');
+          this.router.navigate(['/']);
         },
         error: (err) => {
-        
           console.error('Login failed:', err);
-        }
+        },
       });
     }
   }

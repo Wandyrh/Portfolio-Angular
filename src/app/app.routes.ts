@@ -1,6 +1,13 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
-  { path: 'login', loadComponent: () => import('./features/auth/login').then(m => m.Login) }
+  { path: 'login', loadComponent: () => import('./features/auth/login').then(m => m.Login) },
+  { path: '', pathMatch: 'full', redirectTo: 'products' },
+  {
+    path: '',
+    loadComponent: () => import('./layouts/main-layout/main-layout').then(m => m.MainLayout),
+    children: [
+      { path: 'products', loadComponent: () => import('./features/products/products').then(m => m.Products) }      
+    ]
+  }
 ];

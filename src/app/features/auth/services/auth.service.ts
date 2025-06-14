@@ -4,6 +4,7 @@ import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { LoginDto } from '.././dtos/login.dto';
 import { LoginUserResponseDTO } from '../dtos/login-user-response.dto';
+import { ApiResult } from '../../../shared/dtos/api-result.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(dto: LoginDto): Observable<LoginUserResponseDTO> {
-    return this.http.post<LoginUserResponseDTO>(`${this.apiUrl}/Authentication/login`, dto);
+  login(dto: LoginDto): Observable<ApiResult<LoginUserResponseDTO>> {
+    return this.http.post<ApiResult<LoginUserResponseDTO>>(`${this.apiUrl}/Authentication/login`, dto);
   }
 }

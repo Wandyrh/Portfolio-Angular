@@ -1,0 +1,45 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+}
+
+mat-sidenav {
+  background: white;
+  color: #fff;
+  min-width: 240px;
+  max-width: 300px;
+  padding: 0;
+  border: none;
+}
+
+mat-sidenav-content {
+  background: #ebf1f6;
+  min-height: 100vh;
+  padding: 2rem;
+}
+/* Responsive styles */
+@media (max-width: 900px) {
+  mat-sidenav {
+    min-width: 80px;
+    max-width: 120px;
+  }
+  mat-sidenav-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+  mat-sidenav {
+    min-width: 100vw;
+    max-width: 100vw;
+    height: auto;
+    position: relative;
+  }
+  mat-sidenav-content {
+    padding: 0.5rem;
+    min-height: auto;
+  }
+}
