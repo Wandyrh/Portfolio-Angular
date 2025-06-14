@@ -1,4 +1,5 @@
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+// Bootstrap CSS import
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 html, body {
   margin: 0;
@@ -9,3 +10,5 @@ html, body {
   background: #f5f6fa;
   overflow: hidden;
 }
+// Bootstrap Icons import
+@import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
