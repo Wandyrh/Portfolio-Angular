@@ -1,10 +1,12 @@
-<mat-nav-list>
-  <a mat-list-item routerLink="/dashboard" routerLinkActive="mat-elevation-z4">
-    <mat-icon matListIcon>dashboard</mat-icon>
-    <span matLine>Dashboard</span>
+<div class="list-group list-group-flush">
+  <a class="list-group-item list-group-item-action d-flex align-items-center gap-2"
+     routerLink="/dashboard" routerLinkActive="active">
+    <i class="bi bi-speedometer2"></i>
+    <span>Dashboard</span>
   </a>
-  <a mat-list-item routerLink="/products" routerLinkActive="mat-elevation-z4">
-    <mat-icon matListIcon>shopping_cart</mat-icon>
-    <span matLine>Products</span>
-  </a>  
-</mat-nav-list>
+  <a class="list-group-item list-group-item-action d-flex align-items-center gap-2"
+     routerLink="/products" routerLinkActive="active">
+    <i class="bi bi-cart"></i>
+    <span>Products</span>
+  </a>
+</div>
