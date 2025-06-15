@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateUserDto } from './dtos/create-user.dto';
 import { UsersService } from './services/users.service';
 import { UserDto } from './dtos/user.dto';
 import { PagedResult } from '../../shared/dtos/paged-result.dto';
+import { UserRegisterDialog } from './dialogs/user-register-dialog';
 
 @Component({
   selector: 'app-users',
@@ -23,7 +26,10 @@ export class Users implements OnInit {
   error: string | null = null;
 
 
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.loadPage(1);
@@ -32,6 +38,19 @@ export class Users implements OnInit {
   onPageSizeChange(event: Event): void {
     const value = (event.target as HTMLSelectElement).value;
     this.loadPage(1, Number(value));
+  }
+
+  openRegisterDialog(): void {
+    const dialogRef = this.dialog.open<UserRegisterDialog, undefined, CreateUserDto>(UserRegisterDialog, {
+      width: '400px'
+    });
+    dialogRef.afterClosed().subscribe((result: CreateUserDto | undefined) => {
+      if (result) {
+        this.usersService.create(result).subscribe({
+          next: () => this.loadPage(1)
+        });
+      }
+    });
   }
 
   loadPage(page: number, pageSize?: number): void {
