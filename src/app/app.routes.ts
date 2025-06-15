@@ -8,7 +8,8 @@ export const routes: Routes = [
     loadComponent: () => import('./layouts/main-layout/main-layout').then(m => m.MainLayout),
     children: [
       { path: 'products', loadComponent: () => import('./features/products/products').then(m => m.Products) },
-      { path: 'users', loadComponent: () => import('./features/users/users').then(m => m.Users) }
+      { path: 'users', loadComponent: () => import('./features/users/users').then(m => m.Users) },
+      { path: 'product-categories', loadComponent: () => import('./features/products/product-categories').then(m => m.ProductCategories) }
     ]
   }
 ];

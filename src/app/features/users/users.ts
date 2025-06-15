@@ -57,7 +57,7 @@ export class Users implements OnInit {
         this.usersService.create(result).subscribe({
           next: () => {
             this.loadPage(1);
-            this.snackBar.open('Nuevo usuario creado con éxito', '✕', {
+            this.snackBar.open('New user created successfully', '✕', {
               duration: 3000,
               verticalPosition: 'bottom',
               panelClass: ['snackbar-success'],
@@ -81,7 +81,7 @@ export class Users implements OnInit {
         this.usersService.delete(user.id).subscribe({
           next: () => {
             this.loadPage(this.pagedResult.page);
-            this.snackBar.open('Usuario eliminado', '✕', {
+            this.snackBar.open('User deleted', '✕', {
               duration: 3000,
               verticalPosition: 'bottom',
               panelClass: ['snackbar-success'],
@@ -132,7 +132,14 @@ export class Users implements OnInit {
         result.id = user.id;
         this.usersService
           .update(user.id, result)
-          .subscribe(() => this.loadPage(this.pagedResult.page));
+          .subscribe(() => {
+            this.loadPage(this.pagedResult.page);
+            this.snackBar.open('User updated', '✕', {
+              duration: 3000,
+              verticalPosition: 'bottom',
+              panelClass: ['snackbar-success'],
+            });
+          });
       }
     });
   }
