@@ -7,7 +7,8 @@ export const routes: Routes = [
     path: '',
     loadComponent: () => import('./layouts/main-layout/main-layout').then(m => m.MainLayout),
     children: [
-      { path: 'products', loadComponent: () => import('./features/products/products').then(m => m.Products) }      
+      { path: 'products', loadComponent: () => import('./features/products/products').then(m => m.Products) },
+      { path: 'users', loadComponent: () => import('./features/users/users').then(m => m.Users) }
     ]
   }
 ];
