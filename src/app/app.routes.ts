@@ -9,7 +9,7 @@ export const routes: Routes = [
     children: [
       { path: 'products', loadComponent: () => import('./features/products/products').then(m => m.Products) },
       { path: 'users', loadComponent: () => import('./features/users/users').then(m => m.Users) },
-      { path: 'product-categories', loadComponent: () => import('./features/products/product-categories').then(m => m.ProductCategories) }
+      { path: 'product-categories', loadComponent: () => import('./features/product-categories/product-categories').then(m => m.ProductCategories) }
     ]
   }
 ];
