@@ -1,0 +1,17 @@
+<div class="card shadow-lg border-0 rounded-4" style="min-width: 420px; max-width: 520px;">
+  <div class="card-header bg-white border-0 rounded-top-4 pb-2 d-flex align-items-center">
+    <h5 class="card-title mb-0 flex-grow-1 fw-semibold">{{ data.title }}</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeDialog(false)" tabindex="-1"></button>
+  </div>
+  <div class="card-body pb-0" style="padding: 2rem 2rem 1rem 2rem;">
+    <p class="mb-0">{{ data.question }}</p>
+  </div>
+  <div class="card-footer bg-white border-0 pt-3 d-flex justify-content-end gap-2 rounded-bottom-4" style="padding: 1.25rem 2rem;">
+    <button type="button" class="btn btn-outline-secondary" (click)="closeDialog(false)">
+      Cancel
+    </button>
+    <button type="button" class="btn btn-primary" (click)="closeDialog(true)">
+      OK
+    </button>
+  </div>
+</div>

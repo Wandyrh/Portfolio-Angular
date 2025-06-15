@@ -1,0 +1,19 @@
+
+::ng-deep .mat-mdc-snack-bar-container.snackbar-success {
+  background: #0d6efd !important;
+  color: #fff !important;
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  border-radius: 0.5rem !important;
+}
+
+::ng-deep .mat-mdc-snack-bar-label,
+::ng-deep .mat-simple-snackbar {
+  color: #fff !important;
+}
+
+::ng-deep .mat-mdc-snack-bar-action {
+  color: #fff !important;
+}
