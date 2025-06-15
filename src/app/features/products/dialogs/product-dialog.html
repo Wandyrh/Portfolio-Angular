@@ -1,0 +1,49 @@
+<h2 class="mb-4">
+  {{ isCreateOperation ? 'Create Product' : 'Edit Product' }}
+</h2>
+<form [formGroup]="form" (ngSubmit)="onAccept()">
+  <div class="mb-3">
+    <label class="form-label">Category</label>
+    <select class="form-select" formControlName="categoryId" required>
+      <option value="" disabled selected>Select a category</option>
+      @if (loadingCategories) {
+        <option disabled>Loading...</option>
+      }
+      @for (cat of categories; track cat.id) {
+        <option [value]="cat.id">{{ cat.name }}</option>
+      }
+    </select>
+    @if ((form.get('categoryId')?.touched || form.get('categoryId')?.dirty) && form.get('categoryId')?.invalid) {
+      <div class="text-danger small">
+        Category is required
+      </div>
+    }
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" class="form-control" formControlName="name" required />
+    @if ((form.get('name')?.touched || form.get('name')?.dirty) && form.get('name')?.invalid) {
+      <div class="text-danger small">
+        Name is required
+      </div>
+    }
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Description</label>
+    <textarea class="form-control" formControlName="description" required></textarea>
+    @if ((form.get('description')?.touched || form.get('description')?.dirty) && form.get('description')?.invalid) {
+      <div class="text-danger small">
+        Description is required
+      </div>
+    }
+  </div>
+
+  <div class="d-flex justify-content-end gap-2 mt-4">
+    <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">Cancel</button>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+      {{ isCreateOperation ? 'Create' : 'Update' }}
+    </button>
+  </div>
+</form>
