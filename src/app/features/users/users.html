@@ -6,7 +6,7 @@
     <button class="btn btn-primary" type="button" (click)="openRegisterDialog()">
       <i class="bi bi-plus-lg me-1"></i> Add new
     </button>
-  </div>
+  </div>  
   @if (loading) {
     <div class="alert alert-info">Loading users...</div>
   }
@@ -23,6 +23,7 @@
             <th scope="col"><i class="bi bi-person"></i> Last Name</th>
             <th scope="col"><i class="bi bi-envelope"></i> Email</th>
             <th scope="col" class="rounded-end"><i class="bi bi-telephone"></i> Phone</th>
+            <th scope="col" class="text-end">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -40,6 +41,14 @@
                 <span class="badge bg-primary-subtle text-primary-emphasis border border-1">
                   {{ user.phone }}
                 </span>
+              </td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-primary me-1" type="button" title="Edit" (click)="editUser(user)">
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-danger" type="button" title="Delete" (click)="deleteUser(user)">
+                  <i class="bi bi-trash"></i>
+                </button>
               </td>
             </tr>
           }
