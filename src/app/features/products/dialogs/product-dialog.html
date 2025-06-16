@@ -1,13 +1,13 @@
 <h2 class="mb-4">
-  {{ isCreateOperation ? 'Create Product' : 'Edit Product' }}
+  {{ isCreateOperation ? ('PRODUCT_DIALOG.CREATE_TITLE' | translate) : ('PRODUCT_DIALOG.EDIT_TITLE' | translate) }}
 </h2>
 <form [formGroup]="form" (ngSubmit)="onAccept()">
   <div class="mb-3">
-    <label class="form-label">Category</label>
+    <label class="form-label">{{ 'PRODUCT_DIALOG.CATEGORY' | translate }}</label>
     <select class="form-select" formControlName="categoryId" required>
-      <option value="" disabled selected>Select a category</option>
+      <option value="" disabled selected>{{ 'PRODUCT_DIALOG.SELECT_CATEGORY' | translate }}</option>
       @if (loadingCategories) {
-        <option disabled>Loading...</option>
+        <option disabled>{{ 'PRODUCT_DIALOG.LOADING' | translate }}</option>
       }
       @for (cat of categories; track cat.id) {
         <option [value]="cat.id">{{ cat.name }}</option>
@@ -15,35 +15,35 @@
     </select>
     @if ((form.get('categoryId')?.touched || form.get('categoryId')?.dirty) && form.get('categoryId')?.invalid) {
       <div class="text-danger small">
-        Category is required
+        {{ 'PRODUCT_DIALOG.CATEGORY_REQUIRED' | translate }}
       </div>
     }
   </div>
 
   <div class="mb-3">
-    <label class="form-label">Name</label>
+    <label class="form-label">{{ 'PRODUCT_DIALOG.NAME' | translate }}</label>
     <input type="text" class="form-control" formControlName="name" required />
     @if ((form.get('name')?.touched || form.get('name')?.dirty) && form.get('name')?.invalid) {
       <div class="text-danger small">
-        Name is required
+        {{ 'PRODUCT_DIALOG.NAME_REQUIRED' | translate }}
       </div>
     }
   </div>
 
   <div class="mb-3">
-    <label class="form-label">Description</label>
+    <label class="form-label">{{ 'PRODUCT_DIALOG.DESCRIPTION' | translate }}</label>
     <textarea class="form-control" formControlName="description" required></textarea>
     @if ((form.get('description')?.touched || form.get('description')?.dirty) && form.get('description')?.invalid) {
       <div class="text-danger small">
-        Description is required
+        {{ 'PRODUCT_DIALOG.DESCRIPTION_REQUIRED' | translate }}
       </div>
     }
   </div>
 
   <div class="d-flex justify-content-end gap-2 mt-4">
-    <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">Cancel</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">{{ 'PRODUCT_DIALOG.CANCEL' | translate }}</button>
     <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
-      {{ isCreateOperation ? 'Create' : 'Update' }}
+      {{ isCreateOperation ? ('PRODUCT_DIALOG.CREATE' | translate) : ('PRODUCT_DIALOG.UPDATE' | translate) }}
     </button>
   </div>
 </form>

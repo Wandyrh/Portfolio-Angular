@@ -1,14 +1,14 @@
 <div class="container">
   <div class="mb-4 d-flex justify-content-between align-items-center">
     <h2 class="display-5 fw-bold text-primary-emphasis mb-0">
-      <i class="bi bi-people me-2"></i>Users
+      <i class="bi bi-people me-2"></i>{{ 'USERS.TITLE' | translate }}
     </h2>
     <button class="btn btn-primary" type="button" (click)="openRegisterDialog()">
-      <i class="bi bi-plus-lg me-1"></i> New User
+      <i class="bi bi-plus-lg me-1"></i> {{ 'USERS.NEW' | translate }}
     </button>
   </div>  
   @if (loading) {
-    <div class="alert alert-info">Loading users...</div>
+    <div class="alert alert-info">{{ 'USERS.LOADING' | translate }}</div>
   }
   @if (error) {
     <div class="alert alert-danger">{{ error }}</div>
@@ -19,11 +19,11 @@
         <thead class="bg-gradient text-white" style="background: linear-gradient(90deg, #0d6efd 0%, #6610f2 100%);">
           <tr>
             <th scope="col" class="rounded-start">#</th>
-            <th scope="col"><i class="bi bi-person"></i> First Name</th>
-            <th scope="col"><i class="bi bi-person"></i> Last Name</th>
-            <th scope="col"><i class="bi bi-envelope"></i> Email</th>
-            <th scope="col" class="rounded-end"><i class="bi bi-telephone"></i> Phone</th>
-            <th scope="col" class="text-end">Actions</th>
+            <th scope="col"><i class="bi bi-person"></i> {{ 'USERS.FIRST_NAME' | translate }}</th>
+            <th scope="col"><i class="bi bi-person"></i> {{ 'USERS.LAST_NAME' | translate }}</th>
+            <th scope="col"><i class="bi bi-envelope"></i> {{ 'USERS.EMAIL' | translate }}</th>
+            <th scope="col" class="rounded-end"><i class="bi bi-telephone"></i> {{ 'USERS.PHONE' | translate }}</th>
+            <th scope="col" class="text-end">{{ 'USERS.ACTIONS' | translate }}</th>
           </tr>
         </thead>
         <tbody>
@@ -43,10 +43,10 @@
                 </span>
               </td>
               <td class="text-end">
-                <button class="btn btn-sm btn-outline-primary me-1" type="button" title="Edit" (click)="editUser(user)">
+                <button class="btn btn-sm btn-outline-primary me-1" type="button" [attr.title]="'USERS.EDIT' | translate" (click)="editUser(user)">
                   <i class="bi bi-pencil"></i>
                 </button>
-                <button class="btn btn-sm btn-outline-danger" type="button" title="Delete" (click)="deleteUser(user)">
+                <button class="btn btn-sm btn-outline-danger" type="button" [attr.title]="'USERS.DELETE' | translate" (click)="deleteUser(user)">
                   <i class="bi bi-trash"></i>
                 </button>
               </td>
@@ -54,7 +54,7 @@
           }
           @if (pagedResult.items.length === 0) {
             <tr>
-              <td colspan="5" class="text-center text-muted">No users found.</td>
+              <td colspan="5" class="text-center text-muted">{{ 'USERS.EMPTY' | translate }}</td>
             </tr>
           }
         </tbody>
