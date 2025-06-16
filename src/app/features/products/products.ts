@@ -8,9 +8,13 @@ import { ProductDialog } from './dialogs/product-dialog';
 import { FormOperation } from '../../shared/enums/form-operation';
 import { QuestionDialog } from '../../shared/components/question-dialog/question-dialog';
 
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-products',
   standalone: true,
+  imports: [TranslateModule],
   templateUrl: './products.html',
   styleUrls: ['./products.scss'],
   providers: [ProductsService],
@@ -30,7 +34,8 @@ export class Products implements OnInit {
   constructor(
     private productsService: ProductsService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -55,7 +60,7 @@ export class Products implements OnInit {
         this.productsService.create(result).subscribe({
           next: () => {
             this.loadPage(1);
-            this.snackBar.open('Product created successfully', '✕', {
+            this.snackBar.open(this.translate.instant('PRODUCTS.ALERT_CREATED'), '✕', {
               duration: 3000,
               verticalPosition: 'bottom',
               panelClass: ['snackbar-success'],
@@ -70,8 +75,8 @@ export class Products implements OnInit {
     const dialogRef = this.dialog.open(QuestionDialog, {
       width: '450px',
       data: {
-        title: 'Delete Product',
-        question: 'Are you sure you want to delete this product?',
+        title: this.translate.instant('PRODUCTS.DELETE_TITLE'),
+        question: this.translate.instant('PRODUCTS.DELETE_QUESTION'),
       },
     });
     dialogRef.afterClosed().subscribe((confirmed: boolean | undefined) => {
@@ -79,7 +84,7 @@ export class Products implements OnInit {
         this.productsService.delete(product.id).subscribe({
           next: () => {
             this.loadPage(this.pagedResult.page);
-            this.snackBar.open('Product deleted', '✕', {
+            this.snackBar.open(this.translate.instant('PRODUCTS.ALERT_DELETED'), '✕', {
               duration: 3000,
               verticalPosition: 'bottom',
               panelClass: ['snackbar-success'],
@@ -110,7 +115,7 @@ export class Products implements OnInit {
         this.loading = false;
       },
       error: () => {
-        this.error = 'Error loading products';
+        this.error = this.translate.instant('PRODUCTS.ALERT_ERROR');
         this.loading = false;
       },
     });
@@ -129,7 +134,7 @@ export class Products implements OnInit {
         result.id = product.id;
         this.productsService.update(product.id, result).subscribe(() => {
           this.loadPage(this.pagedResult.page);
-          this.snackBar.open('Product updated', '✕', {
+          this.snackBar.open(this.translate.instant('PRODUCTS.ALERT_UPDATED'), '✕', {
             duration: 3000,
             verticalPosition: 'bottom',
             panelClass: ['snackbar-success'],

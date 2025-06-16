@@ -1,0 +1,17 @@
+<div class="position-relative">
+  <button class="language-btn dropdown-toggle" type="button" (click)="toggleDropdown()">
+    {{ selectedLabel }}
+  </button>
+  @if (showDropdown) {
+    <ul class="dropdown-menu show dropdown-menu-end mt-2" style="position: absolute; right: 0; display: block; z-index: 1050;">
+      @for (lang of languages; track lang.code) {
+        <li>
+          <button class="dropdown-item" type="button" [class.active]="selected === lang.code" (click)="changeLanguage(lang.code)">
+            {{ lang.label }}
+          </button>
+        </li>
+      }
+    </ul>
+    <div class="dropdown-backdrop" (click)="closeDropdown()" style="position: fixed; inset: 0; z-index: 1040;"></div>
+  }
+</div>

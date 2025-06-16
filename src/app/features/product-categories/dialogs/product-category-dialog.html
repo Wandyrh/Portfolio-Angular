@@ -1,31 +1,31 @@
 @if (isCreateOperation) {
-<h2 class="modal-title fs-4 mb-3">New Category</h2>
+<h2 class="modal-title fs-4 mb-3">{{ 'PRODUCT_CATEGORY_DIALOG.NEW_TITLE' | translate }}</h2>
 }
 @if (isUpdateOperation) {
-<h2 class="modal-title fs-4 mb-3">Edit Category</h2>
+<h2 class="modal-title fs-4 mb-3">{{ 'PRODUCT_CATEGORY_DIALOG.EDIT_TITLE' | translate }}</h2>
 }
 <div>
   <form [formGroup]="form" novalidate>
     <div class="mb-3">
-      <label for="name" class="form-label">Name</label>
+      <label for="name" class="form-label">{{ 'PRODUCT_CATEGORY_DIALOG.NAME' | translate }}</label>
       <input id="name" name="name" type="text" class="form-control" formControlName="name" required>
       @if (form.controls['name'].touched && form.controls['name'].invalid) {
-      <div class="text-danger small mt-1">Name is required.</div>
+      <div class="text-danger small mt-1">{{ 'PRODUCT_CATEGORY_DIALOG.NAME_REQUIRED' | translate }}</div>
       }
     </div>
     <div class="mb-3">
-      <label for="description" class="form-label">Description</label>
+      <label for="description" class="form-label">{{ 'PRODUCT_CATEGORY_DIALOG.DESCRIPTION' | translate }}</label>
       <textarea id="description" name="description" class="form-control" formControlName="description"
         required></textarea>
       @if (form.controls['description'].touched && form.controls['description'].invalid) {
-      <div class="text-danger small mt-1">Description is required.</div>
+      <div class="text-danger small mt-1">{{ 'PRODUCT_CATEGORY_DIALOG.DESCRIPTION_REQUIRED' | translate }}</div>
       }
     </div>
   </form>
 </div>
 <div class="d-flex justify-content-end gap-2 mt-3">
-  <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">{{ 'PRODUCT_CATEGORY_DIALOG.CANCEL' | translate }}</button>
   <button type="button" class="btn btn-primary" (click)="onAccept()" [disabled]="form.invalid">
-    {{ isCreateOperation ? 'Create' : 'Save' }}
+    {{ isCreateOperation ? ('PRODUCT_CATEGORY_DIALOG.CREATE' | translate) : ('PRODUCT_CATEGORY_DIALOG.SAVE' | translate) }}
   </button>
 </div>
