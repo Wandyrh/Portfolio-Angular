@@ -1,14 +1,14 @@
 <div class="container">
   <div class="mb-4 d-flex justify-content-between align-items-center">
     <h2 class="display-5 fw-bold text-primary-emphasis mb-0">
-      <i class="bi bi-box-seam me-2"></i>Products
+      <i class="bi bi-box-seam me-2"></i>{{ 'PRODUCTS.TITLE' | translate }}
     </h2>
     <button class="btn btn-primary" type="button" (click)="openCreateDialog()">
-      <i class="bi bi-plus-lg me-1"></i> New Product
+      <i class="bi bi-plus-lg me-1"></i> {{ 'PRODUCTS.NEW' | translate }}
     </button>
   </div>
   @if (loading) {
-    <div class="alert alert-info">Loading products...</div>
+    <div class="alert alert-info">{{ 'PRODUCTS.LOADING' | translate }}</div>
   }
   @if (error) {
     <div class="alert alert-danger">{{ error }}</div>
@@ -19,10 +19,10 @@
         <thead class="bg-gradient text-white" style="background: linear-gradient(90deg, #0d6efd 0%, #6610f2 100%);">
           <tr>
             <th scope="col" class="rounded-start">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Category</th>
-            <th scope="col" class="text-end">Actions</th>
+            <th scope="col">{{ 'PRODUCTS.NAME' | translate }}</th>
+            <th scope="col">{{ 'PRODUCTS.DESCRIPTION' | translate }}</th>
+            <th scope="col">{{ 'PRODUCTS.CATEGORY' | translate }}</th>
+            <th scope="col" class="text-end">{{ 'PRODUCTS.ACTIONS' | translate }}</th>
           </tr>
         </thead>
         <tbody>
@@ -37,10 +37,10 @@
                 </span>
               </td>
               <td class="text-end">
-                <button class="btn btn-sm btn-outline-primary me-1" type="button" title="Edit" (click)="editProduct(product)">
+                <button class="btn btn-sm btn-outline-primary me-1" type="button" [attr.title]="'PRODUCTS.EDIT' | translate" (click)="editProduct(product)">
                   <i class="bi bi-pencil"></i>
                 </button>
-                <button class="btn btn-sm btn-outline-danger" type="button" title="Delete" (click)="deleteProduct(product)">
+                <button class="btn btn-sm btn-outline-danger" type="button" [attr.title]="'PRODUCTS.DELETE' | translate" (click)="deleteProduct(product)">
                   <i class="bi bi-trash"></i>
                 </button>
               </td>
@@ -48,7 +48,7 @@
           }
           @if (pagedResult.items.length === 0) {
             <tr>
-              <td colspan="5" class="text-center text-muted">No products found.</td>
+              <td colspan="5" class="text-center text-muted">{{ 'PRODUCTS.EMPTY' | translate }}</td>
             </tr>
           }
         </tbody>

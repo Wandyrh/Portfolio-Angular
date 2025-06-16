@@ -1,14 +1,14 @@
 <div class="container">
   <div class="mb-4 d-flex justify-content-between align-items-center">
     <h2 class="display-5 fw-bold text-primary-emphasis mb-0">
-      <i class="bi bi-tags me-2"></i>Product Categories
+      <i class="bi bi-tags me-2"></i>{{ 'PRODUCT_CATEGORIES.TITLE' | translate }}
     </h2>
     <button class="btn btn-primary" type="button" (click)="openRegisterDialog()">
-      <i class="bi bi-plus-lg me-1"></i> New Category
+      <i class="bi bi-plus-lg me-1"></i> {{ 'PRODUCT_CATEGORIES.NEW' | translate }}
     </button>
   </div>
   @if (loading) {
-    <div class="alert alert-info">Loading categories...</div>
+    <div class="alert alert-info">{{ 'PRODUCT_CATEGORIES.LOADING' | translate }}</div>
   }
   @if (error) {
     <div class="alert alert-danger">{{ error }}</div>
@@ -19,9 +19,9 @@
         <thead class="bg-gradient text-white" style="background: linear-gradient(90deg, #0d6efd 0%, #6610f2 100%);">
           <tr>
             <th scope="col" class="rounded-start">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col" class="text-end">Actions</th>
+            <th scope="col">{{ 'PRODUCT_CATEGORIES.NAME' | translate }}</th>
+            <th scope="col">{{ 'PRODUCT_CATEGORIES.DESCRIPTION' | translate }}</th>
+            <th scope="col" class="text-end">{{ 'PRODUCT_CATEGORIES.ACTIONS' | translate }}</th>
           </tr>
         </thead>
         <tbody>
@@ -31,10 +31,10 @@
               <td class="fw-semibold">{{ category.name }}</td>
               <td>{{ category.description }}</td>
               <td class="text-end">
-                <button class="btn btn-sm btn-outline-primary me-1" type="button" title="Editar" (click)="editCategory(category)">
+                <button class="btn btn-sm btn-outline-primary me-1" type="button" [attr.title]="'PRODUCT_CATEGORIES.EDIT' | translate" (click)="editCategory(category)">
                   <i class="bi bi-pencil"></i>
                 </button>
-                <button class="btn btn-sm btn-outline-danger" type="button" title="Eliminar" (click)="deleteCategory(category)">
+                <button class="btn btn-sm btn-outline-danger" type="button" [attr.title]="'PRODUCT_CATEGORIES.DELETE' | translate" (click)="deleteCategory(category)">
                   <i class="bi bi-trash"></i>
                 </button>
               </td>
@@ -42,7 +42,7 @@
           }
           @if (pagedResult.items.length === 0) {
             <tr>
-              <td colspan="4" class="text-center text-muted">No categories registered.</td>
+              <td colspan="4" class="text-center text-muted">{{ 'PRODUCT_CATEGORIES.EMPTY' | translate }}</td>
             </tr>
           }
         </tbody>

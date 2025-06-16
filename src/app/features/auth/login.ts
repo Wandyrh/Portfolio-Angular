@@ -10,11 +10,12 @@ import { LoginDto } from './dtos/login.dto';
 import { TokenService } from '../../shared/services/token.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { Router } from '@angular/router';
+import { LanguageSelector } from '../../shared/components/language-selector/language-selector';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, TranslateModule],
+  imports: [ReactiveFormsModule, TranslateModule, LanguageSelector],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })

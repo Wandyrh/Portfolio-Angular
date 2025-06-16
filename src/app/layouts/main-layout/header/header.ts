@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../features/auth/services/auth.service';
-
+import { LanguageSelector } from '../../../shared/components/language-selector/language-selector';
+import { TranslateModule } from '@ngx-translate/core';
+ 
 @Component({
   selector: 'app-header',
   standalone: true,
+  imports: [LanguageSelector, TranslateModule],
   templateUrl: './header.html',
   styleUrls: ['./header.scss']
 })

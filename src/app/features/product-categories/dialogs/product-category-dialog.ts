@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductCategoryDto } from '../dtos/product-category.dto';
 import { FormOperation } from '../../../shared/enums/form-operation';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-category-dialog',
@@ -18,7 +19,8 @@ import { FormOperation } from '../../../shared/enums/form-operation';
     MatInputModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule
   ]
 })
 export class ProductCategoryDialog {
