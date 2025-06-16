@@ -95,6 +95,16 @@ You can find the backend source code here:
 - **Pagination:** Server-side pagination for lists.
 - **Validation:** All forms with required field validation.
 
+## Internationalization (i18n)
+
+- Full support for English and Spanish throughout the application.
+- Language selector available in the header, with instant language switching.
+- All menus, views, forms, dialogs, alerts, and confirmation messages are translated.
+- The selected language is saved in localStorage and automatically restored on page reload.
+- Translation files:
+  - `src/assets/i18n/en.json`
+  - `src/assets/i18n/es.json`
+
 ## Contributing
 
 Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.

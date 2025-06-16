@@ -8,12 +8,14 @@ import { PagedResult } from '../../shared/dtos/paged-result.dto';
 import { UserDialog } from './dialogs/user-dialog';
 import { FormOperation } from '../../shared/enums/form-operation';
 import { QuestionDialog } from '../../shared/components/question-dialog/question-dialog';
-
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+ 
 @Component({
   selector: 'app-users',
   standalone: true,
   templateUrl: './users.html',
   styleUrls: ['./users.scss'],
+  imports: [TranslateModule],
   providers: [UsersService],
 })
 export class Users implements OnInit {
@@ -31,7 +33,8 @@ export class Users implements OnInit {
   constructor(
     private usersService: UsersService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -57,7 +60,7 @@ export class Users implements OnInit {
         this.usersService.create(result).subscribe({
           next: () => {
             this.loadPage(1);
-            this.snackBar.open('New user created successfully', '✕', {
+            this.snackBar.open(this.translate.instant('USERS.ALERT_CREATED'), '✕', {
               duration: 3000,
               verticalPosition: 'bottom',
               panelClass: ['snackbar-success'],
@@ -72,8 +75,8 @@ export class Users implements OnInit {
     const dialogRef = this.dialog.open(QuestionDialog, {
       width: '450px',
       data: {
-        title: 'Delete User',
-        question: 'Are you sure you want to delete this user?',
+        title: this.translate.instant('USERS.DELETE_TITLE'),
+        question: this.translate.instant('USERS.DELETE_QUESTION'),
       },
     });
     dialogRef.afterClosed().subscribe((confirmed: boolean | undefined) => {
@@ -81,7 +84,7 @@ export class Users implements OnInit {
         this.usersService.delete(user.id).subscribe({
           next: () => {
             this.loadPage(this.pagedResult.page);
-            this.snackBar.open('User deleted', '✕', {
+            this.snackBar.open(this.translate.instant('USERS.ALERT_DELETED'), '✕', {
               duration: 3000,
               verticalPosition: 'bottom',
               panelClass: ['snackbar-success'],
@@ -112,7 +115,7 @@ export class Users implements OnInit {
         this.loading = false;
       },
       error: (err) => {
-        this.error = 'Error loading users';
+        this.error = this.translate.instant('USERS.ALERT_ERROR');
         this.loading = false;
       },
     });
@@ -134,7 +137,7 @@ export class Users implements OnInit {
           .update(user.id, result)
           .subscribe(() => {
             this.loadPage(this.pagedResult.page);
-            this.snackBar.open('User updated', '✕', {
+            this.snackBar.open(this.translate.instant('USERS.ALERT_UPDATED'), '✕', {
               duration: 3000,
               verticalPosition: 'bottom',
               panelClass: ['snackbar-success'],

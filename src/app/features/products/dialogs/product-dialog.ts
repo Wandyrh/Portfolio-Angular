@@ -20,6 +20,8 @@ import { FormOperation } from '../../../shared/enums/form-operation';
 import { ProductCategoriesService } from '../../product-categories/services/product-categories.service';
 import { ProductCategoryDto } from '../../product-categories/dtos/product-category.dto';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-product-dialog',
   templateUrl: './product-dialog.html',
@@ -33,6 +35,7 @@ import { ProductCategoryDto } from '../../product-categories/dtos/product-catego
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule
   ],
   providers: [ProductCategoriesService],
 })

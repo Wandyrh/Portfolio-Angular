@@ -9,12 +9,14 @@ import { PagedResult } from '../../shared/dtos/paged-result.dto';
 import { ProductCategoryDialog } from './dialogs/product-category-dialog';
 import { FormOperation } from '../../shared/enums/form-operation';
 import { QuestionDialog } from '../../shared/components/question-dialog/question-dialog';
-
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+ 
 @Component({
   selector: 'app-product-categories',
   standalone: true,
   templateUrl: './product-categories.html',
   styleUrls: ['./product-categories.scss'],
+  imports: [TranslateModule],
   providers: [ProductCategoriesService]
 })
 export class ProductCategories implements OnInit {
@@ -32,7 +34,8 @@ export class ProductCategories implements OnInit {
   constructor(
     private categoriesService: ProductCategoriesService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -57,7 +60,7 @@ export class ProductCategories implements OnInit {
         this.categoriesService.create(result).subscribe({
           next: () => {
             this.loadPage(1);
-            this.snackBar.open('New category created successfully', '✕', {
+            this.snackBar.open(this.translate.instant('PRODUCT_CATEGORIES.ALERT_CREATED'), '✕', {
               duration: 3000,
               verticalPosition: 'bottom',
               panelClass: ['snackbar-success']
@@ -81,7 +84,7 @@ export class ProductCategories implements OnInit {
         result.id = category.id;
         this.categoriesService.update(category.id, result).subscribe(() => {
           this.loadPage(this.pagedResult.page);
-          this.snackBar.open('Category updated', '✕', {
+          this.snackBar.open(this.translate.instant('PRODUCT_CATEGORIES.ALERT_UPDATED'), '✕', {
             duration: 3000,
             verticalPosition: 'bottom',
             panelClass: ['snackbar-success']
@@ -95,8 +98,8 @@ export class ProductCategories implements OnInit {
     const dialogRef = this.dialog.open(QuestionDialog, {
       width: '400px',
       data: {
-        title: 'Delete Category',
-        question: `Are you sure you want to delete the category "${category.name}"?`,
+        title: this.translate.instant('PRODUCT_CATEGORIES.DELETE_TITLE'),
+        question: this.translate.instant('PRODUCT_CATEGORIES.DELETE_QUESTION', { name: category.name }),
       },
     });
     dialogRef.afterClosed().subscribe((confirmed: boolean | undefined) => {
@@ -104,7 +107,7 @@ export class ProductCategories implements OnInit {
         this.categoriesService.delete(category.id).subscribe({
           next: () => {
             this.loadPage(this.pagedResult.page);
-            this.snackBar.open('Category deleted', '✕', {
+            this.snackBar.open(this.translate.instant('PRODUCT_CATEGORIES.ALERT_DELETED'), '✕', {
               duration: 3000,
               verticalPosition: 'bottom',
               panelClass: ['snackbar-success']
@@ -135,7 +138,7 @@ export class ProductCategories implements OnInit {
         this.loading = false;
       },
       error: (err) => {
-        this.error = 'Error loading categories';
+        this.error = this.translate.instant('PRODUCT_CATEGORIES.ALERT_ERROR');
         this.loading = false;
       },
     });

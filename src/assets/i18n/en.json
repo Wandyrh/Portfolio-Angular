@@ -1,10 +1,101 @@
 {
   "login": {
-    "title": "Sign In",
+    "title": "Login",
     "email": "Email",
-    "emailError": "Please enter a valid email address.",
     "password": "Password",
+    "button": "Login",
+    "email_required": "Email is required and must be valid.",
+    "password_required": "Password is required.",
+    "emailError": "Please enter a valid email address.",
     "passwordError": "Please enter your password.",
     "signIn": "Sign In"
+  },
+  "SIDEBAR": {
+    "PRODUCTS": "Products",
+    "PRODUCT_CATEGORIES": "Product Categories",
+    "USERS": "Users"
+  },
+  "HEADER": {
+    "LOGOUT": "Log out"
+  },
+  "PRODUCTS": {
+    "TITLE": "Products",
+    "NEW": "New Product",
+    "LOADING": "Loading products...",
+    "NAME": "Name",
+    "DESCRIPTION": "Description",
+    "CATEGORY": "Category",
+    "ACTIONS": "Actions",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "EMPTY": "No products found.",
+    "ALERT_CREATED": "Product created successfully",
+    "ALERT_DELETED": "Product deleted",
+    "ALERT_UPDATED": "Product updated",
+    "ALERT_ERROR": "Error loading products",
+    "DELETE_TITLE": "Delete Product",
+    "DELETE_QUESTION": "Are you sure you want to delete this product?"
+  },
+  "PRODUCT_CATEGORIES": {
+    "TITLE": "Product Categories",
+    "NEW": "New Category",
+    "LOADING": "Loading categories...",
+    "NAME": "Name",
+    "DESCRIPTION": "Description",
+    "ACTIONS": "Actions",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "EMPTY": "No categories registered.",
+    "ALERT_CREATED": "New category created successfully",
+    "ALERT_UPDATED": "Category updated",
+    "ALERT_DELETED": "Category deleted",
+    "ALERT_ERROR": "Error loading categories",
+    "DELETE_TITLE": "Delete Category",
+    "DELETE_QUESTION": "Are you sure you want to delete the category \"{{name}}\"?"
+  },
+  "PRODUCT_CATEGORY_DIALOG": {
+    "NEW_TITLE": "New Category",
+    "EDIT_TITLE": "Edit Category",
+    "NAME": "Name",
+    "NAME_REQUIRED": "Name is required.",
+    "DESCRIPTION": "Description",
+    "DESCRIPTION_REQUIRED": "Description is required.",
+    "CANCEL": "Cancel",
+    "CREATE": "Create",
+    "SAVE": "Save"
+  },
+  "PRODUCT_DIALOG": {
+    "CREATE_TITLE": "Create Product",
+    "EDIT_TITLE": "Edit Product",
+    "CATEGORY": "Category",
+    "SELECT_CATEGORY": "Select a category",
+    "LOADING": "Loading...",
+    "CATEGORY_REQUIRED": "Category is required",
+    "NAME": "Name",
+    "NAME_REQUIRED": "Name is required",
+    "DESCRIPTION": "Description",
+    "DESCRIPTION_REQUIRED": "Description is required",
+    "CANCEL": "Cancel",
+    "CREATE": "Create",
+    "UPDATE": "Update"
+  },
+  "USERS": {
+    "TITLE": "Users",
+    "NEW": "New User",
+    "LOADING": "Loading users...",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "EMAIL": "Email",
+    "PHONE": "Phone",
+    "ACTIONS": "Actions",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "EMPTY": "No users found.",
+    "ALERT_CREATED": "New user created successfully",
+    "ALERT_UPDATED": "User updated",
+    "ALERT_DELETED": "User deleted",
+    "ALERT_ERROR": "Error loading users",
+    "DELETE_TITLE": "Delete User",
+    "DELETE_QUESTION": "Are you sure you want to delete this user?"
   }
 }
