@@ -1,0 +1,10 @@
+{
+  "login": {
+    "title": "Iniciar sesión",
+    "email": "Correo electrónico",
+    "emailError": "Por favor, introduce una dirección de correo válida.",
+    "password": "Contraseña",
+    "passwordError": "Por favor, introduce tu contraseña.",
+    "signIn": "Entrar"
+  }
+}

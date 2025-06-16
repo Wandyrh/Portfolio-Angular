@@ -1,0 +1,32 @@
+// Bootstrap CSS import
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+// Bootstrap Icons import
+@import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  background: #f5f6fa;
+  overflow: hidden;
+}
+.mat-mdc-snack-bar-container.snackbar-success {
+  background: #0d6efd !important;
+  color: #fff !important;
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  border-radius: 0.5rem !important;
+}
+
+.mat-mdc-snack-bar-label,
+.mat-simple-snackbar {
+  color: #fff !important;
+}
+
+.mat-mdc-snack-bar-action {
+  color: #fff !important;
+}

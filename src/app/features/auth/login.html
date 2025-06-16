@@ -1,0 +1,26 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off" class="border rounded p-4 bg-white shadow-sm">
+      <h2 class="mb-4 text-center">{{ 'login.title' | translate }}</h2>
+      <div class="mb-3">
+        <label for="email" class="form-label">{{ 'login.email' | translate }}</label>
+        <input id="email" type="email" formControlName="email" required autocomplete="username" class="form-control" />
+        @if (form.get('email')?.invalid && form.get('email')?.touched) {
+          <div class="invalid-feedback d-block">
+            {{ 'login.emailError' | translate }}
+          </div>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">{{ 'login.password' | translate }}</label>
+        <input id="password" type="password" formControlName="password" required autocomplete="current-password" class="form-control" />
+        @if (form.get('password')?.invalid && form.get('password')?.touched) {
+          <div class="invalid-feedback d-block">
+            {{ 'login.passwordError' | translate }}
+          </div>
+        }
+      </div>
+      <button type="submit" [disabled]="form.invalid" class="btn btn-primary w-100">{{ 'login.signIn' | translate }}</button>
+    </form>
+  </div>
+</div>

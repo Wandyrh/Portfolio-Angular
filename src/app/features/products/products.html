@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="mb-4 d-flex justify-content-between align-items-center">
+    <h2 class="display-5 fw-bold text-primary-emphasis mb-0">
+      <i class="bi bi-box-seam me-2"></i>Products
+    </h2>
+    <button class="btn btn-primary" type="button" (click)="openCreateDialog()">
+      <i class="bi bi-plus-lg me-1"></i> New Product
+    </button>
+  </div>
+  @if (loading) {
+    <div class="alert alert-info">Loading products...</div>
+  }
+  @if (error) {
+    <div class="alert alert-danger">{{ error }}</div>
+  }
+  @if (!loading && !error) {
+    <div class="table-responsive rounded-4 shadow-lg border border-2 border-light bg-white">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="bg-gradient text-white" style="background: linear-gradient(90deg, #0d6efd 0%, #6610f2 100%);">
+          <tr>
+            <th scope="col" class="rounded-start">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Category</th>
+            <th scope="col" class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (product of pagedResult.items; track product.id) {
+            <tr class="table-row-hover">
+              <th scope="row" class="fw-bold text-primary">{{ pagedResult.items.indexOf(product) + 1 }}</th>
+              <td class="fw-semibold">{{ product.name }}</td>
+              <td>{{ product.description }}</td>
+              <td>
+                <span class="badge bg-secondary-subtle text-secondary-emphasis border border-1">
+                  {{ product.categoryName }}
+                </span>
+              </td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-primary me-1" type="button" title="Edit" (click)="editProduct(product)">
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-danger" type="button" title="Delete" (click)="deleteProduct(product)">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          }
+          @if (pagedResult.items.length === 0) {
+            <tr>
+              <td colspan="5" class="text-center text-muted">No products found.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex justify-content-end mt-3">
+      <ul class="pagination mb-0">
+        <li class="page-item" [class.disabled]="pagedResult.page === 1">
+          <button class="page-link" (click)="loadPage(pagedResult.page - 1)" [disabled]="pagedResult.page === 1">&laquo;</button>
+        </li>
+        @for (p of pageNumbers; track p) {
+          <li class="page-item" [class.active]="p === pagedResult.page">
+            <button class="page-link" (click)="loadPage(p)">{{ p }}</button>
+          </li>
+        }
+        <li class="page-item" [class.disabled]="pagedResult.page === pagedResult.totalPages">
+          <button class="page-link" (click)="loadPage(pagedResult.page + 1)" [disabled]="pagedResult.page === pagedResult.totalPages">&raquo;</button>
+        </li>
+      </ul>
+    </div>
+  }
+</div>
