@@ -1,59 +1,108 @@
-# PortfolioAngular
+# Portfolio Angular Demo
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2.
+A demonstration project for the portfolio of **Wandy Rodríguez**. This Angular application showcases best practices in modular architecture, clean code, and integration with a RESTful API.
 
-## Development server
+## Technologies Used
 
-To start a local development server, run:
+- **Angular 20+** (standalone components, new control flow)
+- **TypeScript**
+- **Bootstrap 5** (UI and layout)
+- **Angular Material** (dialogs, form controls)
+- **RxJS** (reactive programming)
+- **SCSS** (custom styles)
+- **Icons:** Bootstrap Icons
 
-```bash
-ng serve
+## Project Architecture
+
+- **Feature-based structure:** Each domain (users, products, product-categories, auth) is organized in its own folder under `src/app/features/`.
+- **Standalone Components:** Modern Angular approach, no NgModules.
+- **DTOs:** Data Transfer Objects for type safety and API integration.
+- **Services:** For API communication and business logic.
+- **Dialogs:** For CRUD operations using Angular Material dialogs.
+- **Routing:** Configured in `src/app/app.routes.ts` with lazy loading.
+- **Environment configuration:** API URL and other settings in `src/environments/environment.ts`.
+
+## Main Libraries
+
+- `@angular/core`, `@angular/router`, `@angular/forms`
+- `@angular/material`
+- `bootstrap`
+- `rxjs`
+- `bootstrap-icons`
+
+## API Endpoints Used
+
+The app communicates with a backend API. Main endpoints:
+
+- **Authentication:** `POST /Authentication/login`
+- **Users:** `GET /Users/paged`, `POST /Users`, `PUT /Users/{id}`, `DELETE /Users/{id}`
+- **Product Categories:** `GET /ProductCategories`, `GET /ProductCategories/paged`, `POST /ProductCategories`, `PUT /ProductCategories/{id}`, `DELETE /ProductCategories/{id}`
+- **Products:** `GET /Products`, `GET /Products/paged`, `POST /Products`, `PUT /Products/{id}`, `DELETE /Products/{id}`
+
+## Environment Configuration
+
+Set your API base URL in `src/environments/environment.ts`:
+
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'https://your-api-url.com'
+};
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Setup & Installation
 
-## Code scaffolding
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Wandyrh/Portfolio-Angular.git
+   cd Portfolio-Angular
+   ```
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-```bash
-ng generate component component-name
-```
+3. **Configure environment:**
+   - Edit `src/environments/environment.ts` and set `apiUrl` to your backend API.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+4. **Run the app:**
+   ```bash
+   npm start
+   ```
+   or
+   ```bash
+   ng serve
+   ```
 
-```bash
-ng generate --help
-```
+5. **Access the app:**
+   - Open [http://localhost:4200](http://localhost:4200) in your browser.
 
-## Building
+## Backend API
 
-To build the project run:
+This Angular frontend consumes a backend API built with **.NET 8** using **Clean Architecture**.
+You can find the backend source code here:
+[https://github.com/Wandyrh/Clean-Architecture-Dot-Net](https://github.com/Wandyrh/Clean-Architecture-Dot-Net)
 
-```bash
-ng build
-```
+## Features
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- **Authentication:** Login with backend validation.
+- **User Management:** CRUD for users.
+- **Product Categories:** CRUD for product categories.
+- **Products:** CRUD for products, with category selection.
+- **Responsive UI:** Bootstrap-based, mobile-friendly.
+- **Dialogs:** Angular Material dialogs for create/edit forms.
+- **Pagination:** Server-side pagination for lists.
+- **Validation:** All forms with required field validation.
 
-## Running unit tests
+## Contributing
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-```bash
-ng test
-```
+## Author
 
-## Running end-to-end tests
+Wandy Rodríguez
 
-For end-to-end (e2e) testing, run:
+## License
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[MIT](LICENSE)
