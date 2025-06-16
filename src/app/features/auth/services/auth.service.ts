@@ -17,4 +17,9 @@ export class AuthService {
   login(dto: LoginDto): Observable<ApiResult<LoginUserResponseDTO>> {
     return this.http.post<ApiResult<LoginUserResponseDTO>>(`${this.apiUrl}/Authentication/login`, dto);
   }
+
+  logout(): void {
+    localStorage.clear();
+    sessionStorage.clear();
+  }
 }
