@@ -3,9 +3,9 @@
 A demonstration project for the portfolio of **Wandy Rodríguez**. This Angular application showcases best practices in modular architecture, clean code, and integration with a RESTful API.
 ---
 ![imagen](https://github.com/user-attachments/assets/b5c14ba7-dd42-46ff-b66f-34c7a0855c2b)
-![imagen](https://github.com/user-attachments/assets/c37bcb35-4ae2-4c13-a41c-5e7f31b29630)
-![imagen](https://github.com/user-attachments/assets/815b200e-18e7-4f52-9138-0a6588eeccd6)
-![imagen](https://github.com/user-attachments/assets/56180168-77db-4ba4-8b0a-899bb26fae88)
+![imagen](https://github.com/user-attachments/assets/be4edd57-52d8-4e45-979b-6d886d55c13b)
+![imagen](https://github.com/user-attachments/assets/c615648f-ee0e-480a-9a75-895a788066eb)
+![imagen](https://github.com/user-attachments/assets/e391c3d8-9560-4a78-b4a2-d6a55e2664fb)
 
 ---
 
